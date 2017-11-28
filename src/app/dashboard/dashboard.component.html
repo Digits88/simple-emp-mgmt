@@ -1,0 +1,25 @@
+<h1>Employee Portal</h1>
+
+<div>
+  <button (click)="addEmployee()">Add Employee</button>
+</div>
+
+<div *ngIf="isAddEmployeeVisible">
+  <app-add-employee (employeeAdded)="hideAddEmployee()"> </app-add-employee>
+</div>
+
+<div>
+  <h2>All Employees</h2>
+  <div>
+    <ul>
+      <li *ngFor="let employee of allEmployees">
+        <span>{{employee.firstName}}</span>
+        <button (click)="showDetails(employee.id)">Show Details</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="isShowDetailsVisible">
+  <app-show-emp-details  [employee]="selectedEmployee"></app-show-emp-details>
+</div>
